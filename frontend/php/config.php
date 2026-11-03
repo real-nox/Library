@@ -21,11 +21,11 @@ function body(): array {
 function db(): PDO {
     static $pdo;
     if (!$pdo) {
-        $pdo = new PDO('pgsql:host=' . DB_HOST . ';dbname=postgres;charset=utf8mb4', DB_USER, DB_PASS,
+        $pdo = new PDO('pgsql:host=' . DB_HOST . ';port=5432;dbname=postgres', DB_USER, DB_PASS,
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     return $pdo;
 }
 
 // Erreur inattendue : message simple pour le visiteur (détails non affichés)
-set_exception_handler(fn($e) => out(['error' => 'Erreur du serveur.'], 500));
+// set_exception_handler(fn($e) => out(['error' => 'Erreur du serveur.'], 500));

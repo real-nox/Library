@@ -1,10 +1,3 @@
-/* =====================================================
-   niveau1.js : affichage et filtrage des livres de niveau 1
-   Dépend de main.js (CONFIG). Les livres du serveur doivent avoir
-   les champs : id, titre, matiere (code), prix, image, en_stock
-   ===================================================== */
-
-// Codes de matière -> noms affichés
 const MATIERES = {
   math: 'Mathématiques',
   ar:   'Arabe',
@@ -13,21 +6,7 @@ const MATIERES = {
   ei:   'Éducation islamique'
 };
 
-// Données d'exemple (utilisées tant que CONFIG.API_BOOKS vaut null)
-const SAMPLE_BOOKS = [
-  { id: 1,  titre: 'Mon livre de mathématiques 1',  matiere: 'math', prix: 65, image: '', en_stock: 'oui' },
-  { id: 2,  titre: 'Mathématiques en s\'amusant',   matiere: 'math', prix: 58, image: '', en_stock: 'oui' },
-  { id: 3,  titre: 'Cahier d\'activités maths',     matiere: 'math', prix: 40, image: '', en_stock: 'non' },
-  { id: 4,  titre: 'Al Mufid fi al-Arabiya',        matiere: 'ar',   prix: 55, image: '', en_stock: 'oui' },
-  { id: 5,  titre: 'Je lis en arabe',               matiere: 'ar',   prix: 48, image: '', en_stock: 'oui' },
-  { id: 6,  titre: 'Mon premier livre de français', matiere: 'fr',   prix: 60, image: '', en_stock: 'oui' },
-  { id: 7,  titre: 'Lecture et écriture 1',         matiere: 'fr',   prix: 52, image: '', en_stock: 'non' },
-  { id: 8,  titre: 'Découvrir les sciences',        matiere: 'svt',  prix: 62, image: '', en_stock: 'oui' },
-  { id: 9,  titre: 'Mon corps et la nature',        matiere: 'svt',  prix: 45, image: '', en_stock: 'oui' },
-  { id: 10, titre: 'Éducation islamique 1',         matiere: 'ei',   prix: 50, image: '', en_stock: 'oui' }
-];
-
-let books = [];   // tous les livres chargés
+let books = [];
 window.BOOKS = books;   // partagé avec le chatbot (main.js)
 
 const grid = document.getElementById('books');
@@ -46,13 +25,17 @@ function el(tag, cls, text) {
 async function loadBooks() {
   try {
     if (CONFIG.API_BOOKS) {
-      const r = await fetch(CONFIG.API_BOOKS + '?niveau=1');
+      console.log(CONFIG.API_BOOKS);
+      
+      const r = await fetch(CONFIG.API_BOOKS /*+ '?niveau=1'*/);
+      console.log(r);
+      
       books = await r.json();
     } else {
       books = SAMPLE_BOOKS;
     }
   } catch (e) {
-    books = SAMPLE_BOOKS;   // si le serveur ne répond pas
+    console.error(e);
   }
   window.BOOKS = books;
   render();
