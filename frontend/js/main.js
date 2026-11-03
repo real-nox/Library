@@ -7,8 +7,8 @@
    Tant qu'une adresse vaut null, le site utilise des données d'exemple.
    Quand le PHP est prêt, remplacez par l'adresse (voir DIRECTIONS_PHP.md). */
 const CONFIG = {
-  API_BOOKS: 'php/books.php',  // mettre null pour tester sans serveur (données d'exemple)
-  API_CHAT:  'php/chat.php'
+  API_BOOKS: '../php/books.php',  // mettre null pour tester sans serveur (données d'exemple)
+  API_CHAT:  '../php/chat.php'
 };
 
 /* ---------- 2. Chatbot ---------- */

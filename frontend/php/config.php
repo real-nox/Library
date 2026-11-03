@@ -1,8 +1,5 @@
 <?php
-/* config.php : connexion MySQL + outils communs (inclus par tous les fichiers PHP) */
-
-// TODO : adapter à votre serveur MySQL (XAMPP : root et mot de passe vide)
-const DB_HOST = 'localhost', DB_NAME = 'librairie', DB_USER = 'root', DB_PASS = '';
+const DB_HOST = 'aws-1-eu-central-1.pooler.supabase.com', DB_USER = 'postgres.lqkmzmvfythflhejanum', DB_PASS = 'EyaGRZdv6tSbfnxu';
 
 session_set_cookie_params(['httponly' => true, 'samesite' => 'Strict']);
 session_start();
@@ -24,7 +21,7 @@ function body(): array {
 function db(): PDO {
     static $pdo;
     if (!$pdo) {
-        $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS,
+        $pdo = new PDO('pgsql:host=' . DB_HOST . ';dbname=postgres;charset=utf8mb4', DB_USER, DB_PASS,
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     return $pdo;
