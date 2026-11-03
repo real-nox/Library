@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Librairie Intelligente | Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== BARRE DE NAVIGATION (identique sur toutes les pages) ===== -->
+  <header class="nav">
+    <div class="wrap">
+      <a href="index.html" aria-label="Accueil"><img src="images/logo.png" alt="Librairie Intelligente"></a>
+      <nav aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html#niveaux">Livres</a></li>
+          <li><a href="cahiers.html">Cahiers</a></li>
+          <li><a href="papertie.html">Papeterie</a></li>
+          <li><a href="#contact">Contactez-nous</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO : image du site + nom de la librairie ===== -->
+  <section class="hero">
+    <h1>Librairie Intelligente</h1>
+    <div class="ar" lang="ar" dir="rtl">المكتبة الذكية</div>
+    <p>Vérifiez le stock et les prix avant de vous déplacer.</p>
+  </section>
+
+  <main>
+    <!-- ===== CARTES : chaque carte mène à une autre page ===== -->
+    <section class="section wrap" id="niveaux">
+      <h2>Que cherchez-vous ?</h2>
+      <div class="levels">
+        <a class="level" href="niveau1.html"><img src="images/niveau1.png" alt="" onerror="this.remove()"><span>Niveau 1</span></a>
+        <!-- niveau2.html et cahiers.html : pages à créer plus tard sur le même modèle que niveau1.html -->
+        <a class="level" href="niveau2.html"><img src="images/niveau2.png" alt="" onerror="this.remove()"><span>Niveau 2</span></a>
+        <a class="level" href="cahiers.html"><img src="images/cahiers.png" alt="" onerror="this.remove()"><span>Cahiers</span></a>
+        <a class="level" href="cahiers.html"><img src="images/papeterie.png" alt="" onerror="this.remove()"><span>Papeterie</span></a>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <h2>Contactez-nous</h2>
+        <!-- TODO : remplacer le numéro (format international, sans + ni espaces) et l'e-mail -->
+        <a class="btn wa" href="https://wa.me/212600000000" target="_blank" rel="noopener">Appelez-nous sur WhatsApp</a>
+        <a class="btn mail" href="mailto:contact@librairie-intelligente.ma">Envoyez-nous un e-mail</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== PIED DE PAGE (identique sur toutes les pages) ===== -->
+  <footer class="footer">&copy; Librairie Intelligente. Tous droits réservés.</footer>
+
+  <!-- Le chatbot (icône soleil + fenêtre) est créé par main.js -->
+  <script src="js/main.js"></script>
+</body>
+</html>

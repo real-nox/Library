@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">  <!-- page privée : non référencée par les moteurs de recherche -->
+  <title>Librairie Intelligente | Administration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== BARRE DE NAVIGATION (identique aux autres pages) ===== -->
+  <header class="nav">
+    <div class="wrap">
+      <a href="index.html" aria-label="Accueil"><img src="images/logo.png" alt="Librairie Intelligente"></a>
+      <nav aria-label="Navigation principale">
+        <ul>
+          <li><a href="cahiers.html">Cahiers</a></li>
+          <li><a href="index.html#niveaux">Livres</a></li>
+          <li><a href="index.html#contact">Contactez-nous</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ===== CONNEXION (identifiant + mot de passe) ===== -->
+    <section id="login" class="admin-box" hidden>
+      <h2>Espace administrateur</h2>
+      <form id="loginForm">
+        <label>Identifiant <input id="user" required autocomplete="username"></label>
+        <label>Mot de passe <input id="pass" type="password" required autocomplete="current-password"></label>
+        <button class="abtn ok">Se connecter</button>
+        <p id="loginErr" class="err" role="alert"></p>
+      </form>
+    </section>
+
+    <!-- ===== ADMINISTRATION (visible après connexion) ===== -->
+    <div id="app" hidden>
+
+      <!-- Voir les articles : le tableau est rempli par js/admin.js -->
+      <section class="admin-box">
+        <div class="admin-head">
+          <h2>Voir les articles</h2>
+          <button id="logout" class="abtn" type="button">Se déconnecter</button>
+        </div>
+        <p id="status" role="status"></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Type</th><th>Niveau</th><th>Matière / catégorie</th><th>Titre</th><th>Prix</th><th>Quantité</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Ajouter un article : les champs sont créés par js/admin.js -->
+      <section class="admin-box">
+        <h2>Ajouter un article</h2>
+        <div class="add-row" id="addFields"></div>
+        <button id="addBtn" class="abtn ok" type="button">Ajouter</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">&copy; Librairie Intelligente. Tous droits réservés.</footer>
+  <script src="js/admin.js"></script>
+</body>
+</html>

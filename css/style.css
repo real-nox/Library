@@ -1,0 +1,139 @@
+/* =====================================================
+   Librairie Intelligente - feuille de style commune
+   Sommaire : 1 Variables | 2 Base | 3 Barre de navigation
+   4 Hero | 5 Sections et cartes de niveaux | 6 Page niveau
+   (filtres + livres) | 7 Contact | 8 Pied de page | 9 Chatbot
+   ===================================================== */
+
+/* ---------- 1. Variables (couleurs tirées du logo) ---------- */
+:root{
+  --turq:#4DC3D6;      /* turquoise du logo */
+  --blue:#2F7FCF;      /* bleu du logo */
+  --sun:#F6CD3C;       /* jaune du soleil */
+  --ink:#232B3D;       /* texte (bleu nuit du logo) */
+  --muted:#5B6578;
+  --bg:#EAF4F8;        /* fond général de la page */
+  --panel:#F8FCFD;     /* conteneur légèrement plus clair */
+  --line:#D3E3EA;
+  --green:#1E8E3E;     /* prix */
+}
+
+/* ---------- 2. Base ---------- */
+*{box-sizing:border-box;margin:0}
+body{font-family:'Figtree',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ---------- 3. Barre de navigation (identique sur toutes les pages) ---------- */
+.nav{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;min-height:68px}
+.nav img{height:100px;width:auto;display:block}
+.nav ul{list-style:none;display:flex;gap:10px;padding:0}
+.nav li a{display:block;padding:8px 18px;border:1.5px solid var(--blue);border-radius:99px;font-weight:700;color:var(--blue)}
+.nav li a:hover,.nav li a.active{background:var(--blue);color:#fff}
+
+/* ---------- 4. Hero (image du site + nom en haut) ---------- */
+/* Pour changer l'image : remplacez images/hero.jpg */
+.hero{
+  background:linear-gradient(rgba(35,43,61,.45),rgba(35,43,61,.45)),
+             url(../images/hero.jpg) center/cover,
+             linear-gradient(120deg,var(--turq),var(--blue));
+  color:#fff;text-align:center;padding:90px 20px}
+.hero--small{padding:44px 20px}
+.hero h1{font-size:clamp(1.9rem,6vw,3.2rem);line-height:1.15}
+.hero .ar{font-size:clamp(1.3rem,4vw,2rem);font-weight:700;margin-top:4px}
+.hero p{margin-top:10px;opacity:.92}
+
+/* ---------- 5. Sections + cartes de niveaux (accueil) ---------- */
+.section{padding:44px 0}
+.section h2{text-align:center;font-size:1.7rem;margin-bottom:26px}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.level{position:relative;height:280px;border-radius:14px;overflow:hidden;display:flex;align-items:flex-end;color:#fff;
+  background:linear-gradient(160deg,var(--turq),var(--blue))}   /* visible si l'image manque */
+.level:nth-child(2){background:linear-gradient(160deg,var(--blue),#1F4E96)}
+.level:nth-child(3){background:linear-gradient(160deg,#F2B63C,#D9822B)}
+.level:nth-child(4){background:linear-gradient(160deg,#6FCB9F,#2F9E7A)}
+.level img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.level:hover img{transform:scale(1.05)}
+.level span{position:relative;width:100%;padding:60px 16px 16px;font-size:1.35rem;font-weight:700;
+  background:linear-gradient(transparent,rgba(35,43,61,.85))}
+
+/* ---------- 6. Page niveau : conteneur, filtres, livres ---------- */
+.page-title{text-align:center;font-size:1.8rem;padding:34px 0 20px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:50px}
+.tools{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.tools select,.tools input{padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.search{flex:1;min-width:220px;display:flex;position:relative}
+.search input{width:100%;padding-right:44px}
+.search button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;padding:6px;cursor:pointer}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.book{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.pic{position:relative;height:150px;background:linear-gradient(135deg,var(--c1,#4DC3D6),var(--c2,#2F7FCF))}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:8px;left:8px;background:#B42318;color:#fff;font-size:.8rem;font-weight:700;padding:2px 10px;border-radius:99px}
+.info{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:12px 14px}
+.info h3{font-size:1rem;line-height:1.3}
+.info .mat{font-size:.88rem;color:var(--muted);text-align:right}
+.info .price{grid-column:2;text-align:right;font-size:1.35rem;font-weight:800;color:var(--green)}
+/* couleur de l'image de secours selon la matière */
+.book[data-m=math]{--c1:#4DC3D6;--c2:#2F7FCF}
+.book[data-m=ar]{--c1:#6FCB9F;--c2:#2F9E7A}
+.book[data-m=fr]{--c1:#8E7CE0;--c2:#5546B0}
+.book[data-m=svt]{--c1:#9BD35A;--c2:#4C9A2A}
+.book[data-m=ei]{--c1:#F2B63C;--c2:#D9822B}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px}
+
+/* ---------- 7. Contact ---------- */
+.contact{background:#fff;text-align:center}
+.btn{display:block;max-width:420px;margin:12px auto;padding:14px;border-radius:12px;font-weight:700;color:#fff}
+.btn.wa{background:#1FA855}
+.btn.mail{background:var(--blue)}
+.btn:hover{filter:brightness(.92)}
+
+/* ---------- 8. Pied de page (même pied sur toutes les pages) ---------- */
+.footer{background:var(--ink);color:#C9D3E3;text-align:center;padding:22px;font-size:.92rem}
+
+/* ---------- 9. Chatbot (le HTML est créé par js/main.js) ---------- */
+.sun-btn{position:fixed;right:18px;bottom:18px;z-index:30;width:64px;height:64px;border:0;border-radius:50%;background:#fff;box-shadow:0 6px 18px #0003;cursor:pointer;padding:6px}
+.chat{position:fixed;right:18px;bottom:96px;z-index:30;width:min(340px,calc(100% - 36px));height:400px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px #0003;display:none;flex-direction:column;overflow:hidden}
+.chat.open{display:flex}
+.chat-top{background:var(--blue);color:#fff;padding:12px 14px;font-weight:700}
+.chat-log{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--panel)}
+.msg{max-width:85%;padding:9px 12px;border-radius:12px;white-space:pre-wrap}
+.msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start}
+.msg.me{background:var(--blue);color:#fff;align-self:flex-end}
+.chat form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
+.chat input{flex:1;padding:10px;border:1.5px solid var(--line);border-radius:10px}
+.chat form button{background:var(--blue);color:#fff;border:0;border-radius:10px;padding:0 14px;cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){.level img{transition:none}}
+
+/* ---------- 10. Couleurs de secours : catégories de papeterie ---------- */
+.book[data-m=cahiers]{--c1:#6FCB9F;--c2:#2F9E7A}
+.book[data-m=stylos]{--c1:#4DC3D6;--c2:#2F7FCF}
+.book[data-m=crayons]{--c1:#F2B63C;--c2:#D9822B}
+.book[data-m=fournitures]{--c1:#8E7CE0;--c2:#5546B0}
+
+/* ---------- 11. Page administrateur (admin.html) ---------- */
+.admin-box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:28px 0}
+.admin-box h2{font-size:1.4rem;margin-bottom:14px}
+.admin-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+#loginForm{display:grid;gap:12px;max-width:360px}
+#loginForm label{display:grid;gap:4px;font-weight:700}
+.admin-box input,.admin-box select{padding:9px 10px;border:1.5px solid var(--line);border-radius:8px;background:#fff;width:100%;min-width:90px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:#fff;min-width:760px}
+th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:middle}
+th{background:#DCEEF4}
+tr.editing{background:#FFF9E0}
+tr.deleting{background:#FDECEA}
+.abtn{border:1.5px solid var(--blue);background:#fff;color:var(--blue);border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer;margin:2px}
+.abtn.ok{background:var(--green);border-color:var(--green);color:#fff}
+.abtn.danger{border-color:#B42318;color:#B42318}
+.abtn:hover{filter:brightness(.93)}
+.add-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.err{color:#B42318;font-weight:700}
+#status{min-height:1.5em;margin-bottom:8px;font-weight:700;color:var(--green)}
+#status.bad{color:#B42318}
