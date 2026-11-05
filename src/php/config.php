@@ -1,5 +1,7 @@
 <?php
 const DB_HOST = 'aws-1-eu-central-1.pooler.supabase.com', DB_USER = 'postgres.lqkmzmvfythflhejanum', DB_PASS = 'EyaGRZdv6tSbfnxu';
+require __DIR__ . '/secrets.php';
+
 
 session_set_cookie_params(['httponly' => true, 'samesite' => 'Strict']);
 session_start();
