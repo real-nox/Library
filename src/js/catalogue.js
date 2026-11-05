@@ -74,7 +74,7 @@ function render() {
     img.src = b.image || 'images/matieres/' + b.matiere + '.jpg';
     img.onerror = () => img.remove();         // image absente : on garde le dégradé
     pic.append(img);
-    if (b.en_stock !== 'oui') pic.append(el('span', 'badge', 'Épuisé'));
+    if (b.quantite == 0) pic.append(el('span', 'badge', 'Épuisé'));
 
     // Partie basse : titre, matière (à droite), prix en vert
     const info = el('div', 'info');
