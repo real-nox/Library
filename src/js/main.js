@@ -49,20 +49,15 @@ function buildChatbot() {
     return m;
   };
 
-  btn.onclick = () => {
-    console.log("test");
-    
+  btn.onclick = () => {    
     box.classList.toggle('open');
     if (!log.children.length) say("Bonjour ! Demandez-moi le prix ou la disponibilité d'un livre.", 'bot');
     input.focus();
   };
 
-  // Envoi d'un message
-  console.log(box);
-  
+  // Envoi d'un message  
   box.querySelector('form').onsubmit = async e => {
     e.preventDefault();
-    console.log("here");
     
     const text = input.value.trim();
     if (!text) return;
@@ -75,10 +70,7 @@ function buildChatbot() {
   };
 }
 
-// Réponse du chatbot : serveur PHP si disponible, sinon réponse locale d'exemple
 async function botReply(text) {
-  console.log(CONFIG.API_CHAT);
-
   if (CONFIG.API_CHAT) {
     try {
       const r = await fetch(CONFIG.API_CHAT, {
@@ -93,7 +85,7 @@ async function botReply(text) {
       return 'Je ne peux pas joindre le serveur pour le moment. Réessayez dans un instant.';
     }
   }
-  // Sample mode (only when API_CHAT is null)
+
   const q = text.toLowerCase();
   const hit = (window.BOOKS || []).find(b => q.includes(b.titre.toLowerCase()) ||
     b.titre.toLowerCase().split(' ').some(w => w.length > 4 && q.includes(w)));

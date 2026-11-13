@@ -1,6 +1,6 @@
 <?php
 /* books.php : liste publique des articles (lecture seule)
-   GET books.php?type=livres        -> livr
+   GET books.php?type=livres        -> livres
    GET books.php?type=papeterie  -> cahiers et papeterie */
 require __DIR__ . '/config.php';
 

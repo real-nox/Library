@@ -28,7 +28,7 @@
   <main class="wrap">
 
     <!-- ===== CONNEXION (identifiant + mot de passe) ===== -->
-    <section id="login" class="admin-box" hidden>
+    <section id="login" class="admin-box">
       <h2>Espace administrateur</h2>
       <form id="loginForm">
         <label>Identifiant <input id="user" required autocomplete="username"></label>
@@ -51,7 +51,7 @@
         <div class="table-wrap">
           <table>
             <thead>
-              <tr><th>ID</th><th>Type</th><th>Niveau</th><th>Matière / catégorie</th><th>Titre</th><th>Prix</th><th>Quantité</th><th>Actions</th></tr>
+              <tr><th>ID</th><th>Type</th><th>Catégorie</th><th>Titre</th><th>Prix</th><th>Quantité</th><th>Actions</th></tr>
             </thead>
             <tbody id="rows"></tbody>
           </table>
@@ -68,6 +68,6 @@
   </main>
 
   <footer class="footer">&copy; Librairie Intelligente. Tous droits réservés.</footer>
-  <script src="js/admin.js"></script>
+  <script src="../js/admin.js"></script>
 </body>
 </html>

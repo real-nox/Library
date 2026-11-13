@@ -18,7 +18,7 @@ foreach ($words as $w) {
 }
 
 $st = db()->prepare("SELECT id, titre, prix, quantite FROM produits
-                     WHERE " . implode(' OR ', $where) . " LIMIT 5");
+                    WHERE " . implode(' OR ', $where) . " LIMIT 5");
 $st->execute($params);
 $items = $st->fetchAll(PDO::FETCH_ASSOC);
 

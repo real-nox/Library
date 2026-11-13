@@ -1,12 +1,4 @@
-/* =====================================================
-   admin.js : page administrateur
-   - connexion / déconnexion
-   - tableau des articles : Modifier / Supprimer -> Confirmer / Annuler
-   - formulaire d'ajout
-   Toutes les modifications sont envoyées à php/admin.php (base de données)
-   ===================================================== */
-
-const API = 'php/admin.php';
+const API = '../php/admin.php';
 const MATS = { math: 'Mathématiques', ar: 'Arabe', fr: 'Français', svt: 'Sciences (SVT)', ei: 'Éducation islamique',
                cahiers: 'Cahiers', stylos: 'Stylos', crayons: 'Crayons', fournitures: 'Fournitures' };
 const LIVRES = ['math', 'ar', 'fr', 'svt', 'ei'];                 // matières des livres
@@ -86,7 +78,7 @@ function row(it) {
   // État normal : boutons Modifier / Supprimer
   const draw = () => {
     tr.className = '';
-    tr.replaceChildren(td(it.id), td(it.type), td(it.type === 'livre' ? 'Niveau ' + it.niveau : '-'), td(MATS[it.matiere] || it.matiere),
+    tr.replaceChildren(td(it.id), td(it.type), td(MATS[it.matiere] || it.categorie),
       td(it.titre), td(it.prix + ' DH'), td(it.quantite),
       td(btn('Modifier', '', edit), btn('Supprimer', 'danger', ask)));
   };

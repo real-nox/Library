@@ -15,6 +15,8 @@ if ($action === 'login') {
     $st = db()->prepare('SELECT mot_de_passe FROM admins WHERE identifiant = ?');
     $st->execute([$b['identifiant'] ?? '']);
     $hash = $st->fetchColumn();
+
+    echo $hash;
     if ($hash && password_verify($b['mot_de_passe'] ?? '', $hash)) {
         session_regenerate_id(true);
         $_SESSION['admin'] = true;
@@ -23,7 +25,7 @@ if ($action === 'login') {
     usleep(600000);   // ralentit les essais de mots de passe
     out(['error' => 'Identifiant ou mot de passe incorrect.'], 401);
 }
-if ($action === 'check') out(['ok' => !empty($_SESSION['admin'])]);
+if ($action === 'check') {out("test"); out(['ok' => !empty($_SESSION['admin'])]);};
 
 // ----- À partir d'ici : administrateur connecté obligatoire -----
 if (empty($_SESSION['admin'])) out(['error' => 'Connexion requise.'], 401);
@@ -47,13 +49,13 @@ function clean(array $b): array {
 
 switch ($action) {
     case 'list':
-        out(db()->query('SELECT id, type, niveau, titre, matiere, prix, quantite FROM produits ORDER BY id')->fetchAll());
+        out(db()->query('SELECT id, type, categorie, titre, prix, quantite FROM produits ORDER BY id')->fetchAll());
     case 'add':
-        db()->prepare('INSERT INTO produits (type, niveau, titre, matiere, prix, quantite) VALUES (?,?,?,?,?,?)')->execute(clean($b));
+        db()->prepare('INSERT INTO produits (type, categorie, titre, prix, quantite) VALUES (?,?,?,?,?,?)')->execute(clean($b));
         out(['ok' => true]);
     case 'update':
         $v = clean($b); $v[] = (int)($b['id'] ?? 0);
-        db()->prepare('UPDATE produits SET type=?, niveau=?, titre=?, matiere=?, prix=?, quantite=? WHERE id=?')->execute($v);
+        db()->prepare('UPDATE produits SET type=?, categorie=?, titre=?, prix=?, quantite=? WHERE id=?')->execute($v);
         out(['ok' => true]);
     case 'delete':
         db()->prepare('DELETE FROM produits WHERE id = ?')->execute([(int)($b['id'] ?? 0)]);

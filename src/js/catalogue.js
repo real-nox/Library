@@ -1,21 +1,12 @@
-/* =====================================================
-   catalogue.js : affichage et filtrage des articles (niveau 1, niveau 2, cahiers)
-   Dépend de main.js (CONFIG). Les livres du serveur doivent avoir
-   les champs : id, titre, matiere (code), prix, image, en_stock
-   ===================================================== */
-
-// Codes de matière -> noms affichés
 const MATIERES = {
   math: 'Mathématiques',
   ar:   'Arabe',
   fr:   'Français',
   svt:  'Sciences (SVT)',
   ei:   'Éducation islamique',
-  cahiers: 'Cahiers', stylos: 'Stylos', crayons: 'Crayons', fournitures: 'Fournitures'
+  cahiers: 'Cahiers', papeterie: 'Papeterie'
 };
 
-// Données d'exemple (utilisées tant que CONFIG.API_BOOKS vaut null)
-const SAMPLE_BOOKS = [{"id": 1, "type": "livre", "niveau": 1, "titre": "Mon livre de mathématiques 1", "matiere": "math", "prix": 65, "image": "", "en_stock": "oui"}, {"id": 2, "type": "livre", "niveau": 1, "titre": "Mathématiques en s'amusant", "matiere": "math", "prix": 58, "image": "", "en_stock": "oui"}, {"id": 3, "type": "livre", "niveau": 1, "titre": "Cahier d'activités maths", "matiere": "math", "prix": 40, "image": "", "en_stock": "non"}, {"id": 4, "type": "livre", "niveau": 1, "titre": "Al Mufid fi al-Arabiya", "matiere": "ar", "prix": 55, "image": "", "en_stock": "oui"}, {"id": 5, "type": "livre", "niveau": 1, "titre": "Je lis en arabe", "matiere": "ar", "prix": 48, "image": "", "en_stock": "oui"}, {"id": 6, "type": "livre", "niveau": 1, "titre": "Mon premier livre de français", "matiere": "fr", "prix": 60, "image": "", "en_stock": "oui"}, {"id": 7, "type": "livre", "niveau": 1, "titre": "Lecture et écriture 1", "matiere": "fr", "prix": 52, "image": "", "en_stock": "non"}, {"id": 8, "type": "livre", "niveau": 1, "titre": "Découvrir les sciences", "matiere": "svt", "prix": 62, "image": "", "en_stock": "oui"}, {"id": 9, "type": "livre", "niveau": 1, "titre": "Mon corps et la nature", "matiere": "svt", "prix": 45, "image": "", "en_stock": "oui"}, {"id": 10, "type": "livre", "niveau": 1, "titre": "Éducation islamique 1", "matiere": "ei", "prix": 50, "image": "", "en_stock": "oui"}, {"id": 11, "type": "livre", "niveau": 2, "titre": "Mathématiques 2e niveau", "matiere": "math", "prix": 70, "image": "", "en_stock": "oui"}, {"id": 12, "type": "livre", "niveau": 2, "titre": "Al Mufid fi al-Arabiya 2", "matiere": "ar", "prix": 58, "image": "", "en_stock": "oui"}, {"id": 13, "type": "livre", "niveau": 2, "titre": "Français : grammaire 2", "matiere": "fr", "prix": 64, "image": "", "en_stock": "non"}, {"id": 14, "type": "livre", "niveau": 2, "titre": "Sciences et vie 2", "matiere": "svt", "prix": 66, "image": "", "en_stock": "oui"}, {"id": 15, "type": "livre", "niveau": 2, "titre": "Éducation islamique 2", "matiere": "ei", "prix": 52, "image": "", "en_stock": "oui"}, {"id": 16, "type": "papeterie", "niveau": null, "titre": "Cahier 96 pages grands carreaux", "matiere": "cahiers", "prix": 8, "image": "", "en_stock": "oui"}, {"id": 17, "type": "papeterie", "niveau": null, "titre": "Cahier 192 pages", "matiere": "cahiers", "prix": 14, "image": "", "en_stock": "oui"}, {"id": 18, "type": "papeterie", "niveau": null, "titre": "Stylo bille bleu (boîte de 10)", "matiere": "stylos", "prix": 20, "image": "", "en_stock": "oui"}, {"id": 19, "type": "papeterie", "niveau": null, "titre": "Stylo plume", "matiere": "stylos", "prix": 25, "image": "", "en_stock": "non"}, {"id": 20, "type": "papeterie", "niveau": null, "titre": "Crayon HB (lot de 12)", "matiere": "crayons", "prix": 15, "image": "", "en_stock": "oui"}, {"id": 21, "type": "papeterie", "niveau": null, "titre": "Crayons de couleur (24)", "matiere": "crayons", "prix": 32, "image": "", "en_stock": "oui"}, {"id": 22, "type": "papeterie", "niveau": null, "titre": "Règle 30 cm", "matiere": "fournitures", "prix": 5, "image": "", "en_stock": "non"}, {"id": 23, "type": "papeterie", "niveau": null, "titre": "Gomme blanche", "matiere": "fournitures", "prix": 3, "image": "", "en_stock": "oui"}];
 // Articles d'exemple de la page courante (niveau ou papeterie)
 const sampleForPage = () => SAMPLE_BOOKS.filter(b => PAGE.type ? b.type === PAGE.type : b.niveau == PAGE.niveau);
 
@@ -54,6 +45,8 @@ async function loadBooks() {
 // 2) Affichage : applique le filtre de matière + la recherche par titre
 function render() {
   const m = selMatiere.value;
+  console.log(m);
+  
   const q = inpRecherche.value.trim().toLowerCase();
   const list = books.filter(b => (!m || b.matiere === m) && (!q || b.titre.toLowerCase().includes(q)));
 
