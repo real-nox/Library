@@ -70,7 +70,10 @@ function buildChatbot() {
   };
 }
 
+// Réponse du chatbot : serveur PHP si disponible, sinon réponse locale d'exemple
 async function botReply(text) {
+  console.log(CONFIG.API_CHAT);
+
   if (CONFIG.API_CHAT) {
     try {
       const r = await fetch(CONFIG.API_CHAT, {
@@ -85,7 +88,7 @@ async function botReply(text) {
       return 'Je ne peux pas joindre le serveur pour le moment. Réessayez dans un instant.';
     }
   }
-
+  // Sample mode (only when API_CHAT is null)
   const q = text.toLowerCase();
   const hit = (window.BOOKS || []).find(b => q.includes(b.titre.toLowerCase()) ||
     b.titre.toLowerCase().split(' ').some(w => w.length > 4 && q.includes(w)));
