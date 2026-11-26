@@ -1,2 +1,3 @@
 *.env
 src/php/secrets.php
+node_modules

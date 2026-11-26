@@ -1,12 +1,8 @@
-/* ---------- 1. Réglages ----------
-   Tant qu'une adresse vaut null, le site utilise des données d'exemple.
-   Quand le PHP est prêt, remplacez par l'adresse (voir DIRECTIONS_PHP.md). */
 const CONFIG = {
-  API_BOOKS: '../php/books.php',
-  API_CHAT: '../php/chat.php'
+  API_BOOKS: apiConfig.books,
+  API_CHAT: apiConfig.chat
 };
 
-/* ---------- 2. Chatbot ---------- */
 const SUN_SVG = '<svg viewBox="0 0 64 64" aria-hidden="true"><g stroke="#F6CD3C" stroke-width="4" stroke-linecap="round"><path d="M32 3v7M32 54v7M3 32h7M54 32h7M11 11l5 5M48 48l5 5M53 11l-5 5M16 48l-5 5"/></g><circle cx="32" cy="32" r="14" fill="#F6CD3C"/></svg>';
 
 function buildChatbot() {
