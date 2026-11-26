@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Librairie Intelligente | Accueil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/site.css"> <!-- navigation commune + réglages Bootstrap -->
+    <style>
+        /* ===== Styles propres à l'accueil (la navigation est dans site.css) ===== */
+        main {
+            overflow-x: clip
+        }
+
+        /* ----- Sections image + texte (alternées comme sur la maquette) ----- */
+        .feature {
+            padding: clamp(3rem, 7vw, 5.5rem) 0
+        }
+
+        .feature--alt {
+            background: #fff
+        }
+
+        .frame {
+            position: relative;
+            isolation: isolate;
+            aspect-ratio: 4 / 3;
+            border-radius: 22px;
+            background: linear-gradient(135deg, var(--turq), var(--blue))
+        }
+
+        /* le bloc de couleur décalé derrière l'image : l'élément signature de la page */
+        .frame::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: 22px;
+            background: var(--accent, var(--sun));
+            opacity: .5;
+            transform: translate(-16px, 16px)
+        }
+
+        .frame--right::before {
+            transform: translate(16px, 16px)
+        }
+
+        .frame .photo,
+        .frame .ill {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 22px
+        }
+
+        .frame .photo {
+            object-fit: cover;
+            box-shadow: 0 14px 34px rgba(35, 43, 61, .16)
+        }
+
+        .ico {
+            position: absolute;
+            top: -16px;
+            left: -16px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--sun);
+            color: var(--ink);
+            box-shadow: 0 6px 16px rgba(35, 43, 61, .18)
+        }
+
+        .ico svg {
+            width: 26px;
+            height: 26px
+        }
+
+        .feature h2 {
+            font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem
+        }
+
+        .feature h2::after {
+            content: "";
+            display: block;
+            width: 56px;
+            height: 5px;
+            border-radius: 99px;
+            background: var(--sun);
+            margin-top: .8rem
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 46ch;
+            margin: 0 0 1.4rem
+        }
+
+        /* boutons (classe .cta : on évite .btn qui existe déjà dans style.css et Bootstrap) */
+        .cta {
+            display: inline-block;
+            padding: 11px 26px;
+            border: 0;
+            border-radius: 99px;
+            background: var(--blue);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .cta:hover {
+            filter: brightness(.9);
+            color: #fff
+        }
+
+        .cta--wa {
+            background: #1FA855
+        }
+
+        /* ----- Contact ----- */
+        .contact {
+            padding: 3.5rem 0
+        }
+
+        .contact h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            margin-bottom: 1.4rem
+        }
+
+        .contact .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center
+        }
+
+        @media (max-width: 767.98px) {
+            .feature .text-col {
+                text-align: center
+            }
+
+            .feature h2::after {
+                margin-left: auto;
+                margin-right: auto
+            }
+
+            .feature p {
+                margin-left: auto;
+                margin-right: auto
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-nav">
+        <nav class="navbar navbar-expand-md wrap py-2" aria-label="Navigation principale">
+            <a class="navbar-brand" href="index.html" aria-label="Accueil"><img src="../images/logo.png"
+                    alt="Librairie Intelligente"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-md-end" id="menu">
+                <ul class="navbar-nav gap-2 pt-3 pt-md-0">
+                    <li class="nav-item"><a class="nav-link" href="niveau1.html">Livres</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cahiers.html">Papeterie</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#imprimer">Imprimer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero hero--shop">
+        <h1>Librairie Intelligente</h1>
+        <div class="ar" lang="ar" dir="rtl">المكتبة الذكية</div>
+        <p>Vérifiez le stock et les prix avant de vous déplacer.</p>
+    </section>
+
+    <main>
+        <section class="feature" id="niveaux">
+            <div class="wrap">
+                <div class="row align-items-center g-5">
+                    <div class="col-md-6">
+                        <div class="frame" style="--accent: var(--turq)">
+                            <img class="photo" src="../images/livres.webp" alt="Pile de livres scolaires" loading="lazy"
+                                onerror="this.remove()">
+                            <span class="ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-col">
+                        <h2>Les livres scolaires</h2>
+                        <p>Mathématiques, arabe, français, sciences et éducation islamique : retrouvez les manuels de
+                            chaque matière, avec leur prix et leur disponibilité.</p>
+                        <a class="cta" href="niveau1.html">Voir les livres</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature feature--alt" id="papeterie">
+            <div class="wrap">
+                <div class="row align-items-center g-5">
+                    <div class="col-md-6 order-md-2">
+                        <div class="frame frame--right" style="--accent: var(--sun)">
+                            <img class="photo" src="../images/papieterie.jpeg"
+                                alt="Crayons, règle et cahiers de papeterie" loading="lazy" onerror="this.remove()">
+                            <span class="ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                                    <path d="m15 5 4 4" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-md-1 text-col">
+                        <h2>Papeterie et cahiers</h2>
+                        <p>Cahiers, stylos, crayons et fournitures : tout le matériel pour la rentrée et pour l’année
+                            entière, à retrouver en un seul endroit.</p>
+                        <a class="cta" href="cahiers.html">Voir la papeterie</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature" id="imprimer">
+            <div class="wrap">
+                <div class="row align-items-center g-5">
+                    <div class="col-md-6">
+                        <div class="frame" style="--accent: var(--blue)">
+                            <svg class="ill" viewBox="0 0 400 300" aria-hidden="true">
+                                <rect x="140" y="34" width="120" height="90" rx="6" fill="#fff" />
+                                <rect x="156" y="52" width="88" height="8" rx="4" fill="#D3E3EA" />
+                                <rect x="156" y="70" width="64" height="8" rx="4" fill="#D3E3EA" />
+                                <rect x="70" y="110" width="260" height="104" rx="18" fill="#232B3D" />
+                                <rect x="92" y="130" width="216" height="14" rx="7" fill="#0F1420" />
+                                <circle cx="296" cy="176" r="8" fill="#F6CD3C" />
+                                <rect x="110" y="190" width="180" height="82" rx="6" fill="#fff" />
+                                <rect x="128" y="208" width="30" height="10" rx="5" fill="#4DC3D6" />
+                                <rect x="164" y="208" width="30" height="10" rx="5" fill="#2F7FCF" />
+                                <rect x="200" y="208" width="30" height="10" rx="5" fill="#F6CD3C" />
+                                <rect x="128" y="228" width="144" height="8" rx="4" fill="#D3E3EA" />
+                                <rect x="128" y="244" width="100" height="8" rx="4" fill="#D3E3EA" />
+                            </svg>
+                            <img class="photo" src="../images/imprimer.jpg" alt="Impression et photocopie"
+                                loading="lazy" onerror="this.remove()">
+                            <span class="ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 9V2h12v7" />
+                                    <path
+                                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                                    <path d="M6 14h12v8H6z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-col">
+                        <h2>Impression et photocopie</h2>
+                        <p>Imprimez vos documents ou photocopiez vos feuilles, en noir et blanc ou en couleur, en recto
+                            ou recto-verso. Demandez le prix à l’assistant avant de vous déplacer.</p>
+                        <button class="cta" type="button" id="askBot">Demander un prix</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="wrap text-center">
+                <h2>Contactez-nous</h2>
+                <div class="actions">
+                    <a class="cta cta--wa" href="https://wa.me/212600000000" target="_blank" rel="noopener">Appelez-nous
+                        sur WhatsApp</a>
+                    <a class="cta" href="mailto:contact@librairie-intelligente.ma">Envoyez-nous un e-mail</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">&copy; Librairie Intelligente. Tous droits réservés.</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="../js/apiConfig.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.querySelectorAll('#menu .nav-link').forEach(function (a) {
+            a.addEventListener('click', function () {
+                var m = document.getElementById('menu');
+                if (m.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(m).hide();
+            });
+        });
+        document.getElementById('askBot').addEventListener('click', function () {
+            var sun = document.querySelector('.sun-btn');
+            var chat = document.querySelector('.chat');
+            if (sun && chat && !chat.classList.contains('open')) sun.click();
+        });
+    </script>
+</body>
+
+</html>
