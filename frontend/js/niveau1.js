@@ -1,4 +1,4 @@
-const MATIERES = {
+const CATEGORIES = {
   math: 'Mathematiques',
   ar:   'Arabe',
   fr:   'Français',
@@ -27,7 +27,6 @@ function el(tag, cls, text) {
 async function loadBooks() {
   try {
     if (CONFIG.API_BOOKS) {
-      console.log(CONFIG.API_BOOKS);
       
       const r = await fetch(CONFIG.API_BOOKS + '?type=livres');
       console.log(r);
@@ -46,9 +45,9 @@ async function loadBooks() {
 function render() {
   const m = selMatiere.value;
   const q = inpRecherche.value.trim().toLowerCase();
-  console.log(MATIERES[m], q);
+  console.log(CATEGORIES[m], q);
   
-  const list = books.filter(b => (!MATIERES[m] || b.categorie === MATIERES[m]) && (!q || b.titre.toLowerCase().includes(q)));
+  const list = books.filter(b => (!CATEGORIES[m] || b.categorie === CATEGORIES[m]) && (!q || b.titre.toLowerCase().includes(q)));
 
   grid.replaceChildren();
   if (!list.length) {
@@ -71,7 +70,7 @@ function render() {
 
     // Partie basse : titre, matière (à droite), prix en vert
     const info = el('div', 'info');
-    info.append(el('h3', '', b.titre), el('span', 'mat', MATIERES[b.matiere] || b.matiere), el('span', 'price', b.prix + ' DH'));
+    info.append(el('h3', '', b.titre), el('span', 'mat', CATEGORIES[b.categorie] || b.categorie), el('span', 'price', b.prix + ' DH'));
 
     card.append(pic, info);
     grid.append(card);
