@@ -1,0 +1,215 @@
+/* =====================================================
+   Librairie Intelligente - site.css (style commun aux pages qui utilisent Bootstrap)
+   À charger APRÈS bootstrap.min.css et style.css, sur : index, niveau1, cahiers.
+   Sommaire : 1 Réglages Bootstrap rétablis | 2 Barre de navigation | 3 Chatbot | 4 Pages catalogue
+   ===================================================== */
+
+/* ---------- 1. Bootstrap modifie quelques réglages de base : on rétablit ceux du site ---------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    margin: 0
+}
+
+p,
+ul,
+ol {
+    margin: 0
+}
+
+a,
+a:hover {
+    text-decoration: none
+}
+
+.badge {
+    line-height: 1.5
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto
+    }
+}
+
+/* ---------- 2. Barre de navigation (identique sur toutes les pages) ---------- */
+.site-nav {
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 0 var(--line)
+}
+
+.site-nav .navbar-brand {
+    margin: 0
+}
+
+.site-nav .navbar-brand img {
+    height: 72px;
+    width: auto;
+    display: block
+}
+
+.site-nav .navbar-toggler {
+    border: 1.5px solid var(--blue);
+    border-radius: 10px;
+    padding: 6px 10px
+}
+
+.site-nav .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px var(--sun)
+}
+
+.site-nav .navbar-nav .nav-link {
+    padding: 8px 18px;
+    border: 1.5px solid var(--blue);
+    border-radius: 99px;
+    font-weight: 700;
+    color: var(--blue);
+    text-align: center
+}
+
+.site-nav .navbar-nav .nav-link:hover,
+.site-nav .navbar-nav .nav-link:focus-visible,
+.site-nav .navbar-nav .nav-link.active {
+    background: var(--blue);
+    color: #fff
+}
+
+@media (max-width: 767.98px) {
+    .site-nav .navbar-brand img {
+        height: 56px
+    }
+}
+
+/* ---------- 3. Chatbot : même bouton soleil, fenêtre adaptée aux petits écrans ---------- */
+.sun-btn svg {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.chat {
+    height: min(660px, calc(100dvh - 120px))
+}
+
+/* ---------- 4. Pages catalogue (<body class="catalogue">) ---------- */
+.catalogue .page-title {
+    padding: 3rem 0 1.6rem;
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    font-weight: 800
+}
+
+.catalogue .page-title::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 5px;
+    border-radius: 99px;
+    background: var(--sun);
+    margin: .8rem auto 0
+}
+
+.catalogue .panel {
+    padding: clamp(16px, 3vw, 28px);
+    margin-bottom: 4rem;
+    box-shadow: 0 10px 30px rgba(35, 43, 61, .06)
+}
+
+.catalogue .tools select {
+    min-width: 220px
+}
+
+.catalogue .book {
+    box-shadow: 0 4px 14px rgba(35, 43, 61, .06)
+}
+
+@media (max-width: 575.98px) {
+    .catalogue .tools select {
+        width: 100%
+    }
+}
+
+/* ---------- 5. Images d'en-tête (hero) propres à chaque page ---------- */
+/* Les images sont dans images/. Un dégradé sombre garde le texte blanc lisible. */
+.hero--shop,
+.hero--books,
+.hero--stationery {
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 2px 12px rgba(35, 43, 61, .5)
+}
+
+.hero--shop {
+    background-image: linear-gradient(rgba(35, 43, 61, .5), rgba(35, 43, 61, .5)), url(../images/hero-boutique.svg), linear-gradient(120deg, var(--turq), var(--blue))
+}
+
+.hero--books {
+    background-image: linear-gradient(rgba(35, 43, 61, .62), rgba(35, 43, 61, .62)), url(../images/livres.webp), linear-gradient(120deg, var(--turq), var(--blue));
+    background-position: center 55%
+}
+
+.hero--stationery {
+    background-image: linear-gradient(rgba(35, 43, 61, .6), rgba(35, 43, 61, .6)), url(../images/papieterie.jpeg), linear-gradient(120deg, var(--turq), var(--blue));
+    background-position: center 40%
+}
+
+/* ---------- 6. Page administrateur (<body class="admin">) ---------- */
+.admin main {
+    padding-bottom: 3rem
+}
+
+.admin .admin-box {
+    padding: clamp(16px, 3vw, 28px);
+    box-shadow: 0 10px 30px rgba(35, 43, 61, .06)
+}
+
+.admin .admin-box h2 {
+    font-weight: 800;
+    font-size: clamp(1.25rem, 2.4vw, 1.5rem)
+}
+
+.rates-table {
+    min-width: 0
+}
+
+.rates-table th[scope] {
+    background: #DCEEF4;
+    font-weight: 700
+}
+
+.rates-table small {
+    font-weight: 400;
+    color: var(--muted)
+}
+
+.rate-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.rate-cell input {
+    max-width: 140px
+}
+
+#ratesStatus {
+    min-height: 1.5em;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--green)
+}
+
+#ratesStatus.bad {
+    color: #B42318
+}

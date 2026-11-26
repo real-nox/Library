@@ -1,0 +1,217 @@
+
+/* ===== Styles propres à l'accueil (style.css n'est pas modifié) ===== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px
+}
+
+main {
+    overflow-x: clip
+}
+
+/* Chatbot : même bouton soleil, fenêtre adaptée aux petits écrans */
+.sun-btn svg {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.chat {
+    height: min(660px, calc(100dvh - 120px))
+}
+
+/* ----- Barre de navigation (Bootstrap navbar + pastilles du site) ----- */
+.home-nav {
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 0 var(--line)
+}
+
+.home-nav .navbar-brand {
+    margin: 0
+}
+
+.home-nav .navbar-brand img {
+    height: 72px;
+    width: auto;
+    display: block
+}
+
+.home-nav .navbar-toggler {
+    border: 1.5px solid var(--blue);
+    border-radius: 10px;
+    padding: 6px 10px
+}
+
+.home-nav .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px var(--sun)
+}
+
+.home-nav .navbar-nav .nav-link {
+    padding: 8px 18px;
+    border: 1.5px solid var(--blue);
+    border-radius: 99px;
+    font-weight: 700;
+    color: var(--blue);
+    text-align: center
+}
+
+.home-nav .navbar-nav .nav-link:hover,
+.home-nav .navbar-nav .nav-link:focus-visible {
+    background: var(--blue);
+    color: #fff
+}
+
+@media (max-width: 767.98px) {
+    .home-nav .navbar-brand img {
+        height: 56px
+    }
+}
+
+/* ----- Sections image + texte (alternées comme sur la maquette) ----- */
+.feature {
+    padding: clamp(3rem, 7vw, 5.5rem) 0
+}
+
+.feature--alt {
+    background: #fff
+}
+
+.frame {
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: 4 / 3;
+    border-radius: 22px;
+    background: linear-gradient(135deg, var(--turq), var(--blue))
+}
+
+/* le bloc de couleur décalé derrière l'image : l'élément signature de la page */
+.frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 22px;
+    background: var(--accent, var(--sun));
+    opacity: .5;
+    transform: translate(-16px, 16px)
+}
+
+.frame--right::before {
+    transform: translate(16px, 16px)
+}
+
+.frame .photo,
+.frame .ill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 22px
+}
+
+.frame .photo {
+    object-fit: cover;
+    box-shadow: 0 14px 34px rgba(35, 43, 61, .16)
+}
+
+.ico {
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--sun);
+    color: var(--ink);
+    box-shadow: 0 6px 16px rgba(35, 43, 61, .18)
+}
+
+.ico svg {
+    width: 26px;
+    height: 26px
+}
+
+.feature h2 {
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem
+}
+
+.feature h2::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 5px;
+    border-radius: 99px;
+    background: var(--sun);
+    margin-top: .8rem
+}
+
+.feature p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 46ch;
+    margin: 0 0 1.4rem
+}
+
+/* boutons (classe .cta : on évite .btn qui existe déjà dans style.css et Bootstrap) */
+.cta {
+    display: inline-block;
+    padding: 11px 26px;
+    border: 0;
+    border-radius: 99px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer
+}
+
+.cta:hover {
+    filter: brightness(.9);
+    color: #fff
+}
+
+.cta--wa {
+    background: #1FA855
+}
+
+/* ----- Contact ----- */
+.contact {
+    padding: 3.5rem 0
+}
+
+.contact h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    margin-bottom: 1.4rem
+}
+
+.contact .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center
+}
+
+@media (max-width: 767.98px) {
+    .feature .text-col {
+        text-align: center
+    }
+
+    .feature h2::after {
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .feature p {
+        margin-left: auto;
+        margin-right: auto
+    }
+}
